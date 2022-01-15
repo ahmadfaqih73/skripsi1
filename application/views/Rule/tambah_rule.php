@@ -16,8 +16,8 @@
                     <label for="varchar">ipk</label>
 
                     <select class="form-control" name="ipk">
-                        <?php foreach ($Status as $key) : ?>
-                            <option value="<?php echo $key->Status ?>"><?php echo $key->Status ?></option>
+                        <?php foreach ($Keterangan as $key) : ?>
+                            <option value="<?php echo $key->Keterangan ?>"><?php echo $key->Keterangan ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -25,8 +25,8 @@
                     <label for="varchar">Taqwa dan Beriman</label>
 
                     <select class="form-control" name="itaq">
-                        <?php foreach ($Status as $key) : ?>
-                            <option value="<?php echo $key->Status ?>"><?php echo $key->Status ?></option>
+                        <?php foreach ($Keterangan as $key) : ?>
+                            <option value="<?php echo $key->Keterangan ?>"><?php echo $key->Keterangan ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -34,8 +34,7 @@
                     <label for="varchar">Taat Pada Pancasila dan UUD</label>
 
                     <select class="form-control" name="taat">
-                        <?php foreach ($Status as $key) : ?>
-                            <option value="<?php echo $key->Status ?>"><?php echo $key->Status ?></option>
+                        < <?php foreach ($Keterangan as $key) : ?> <option value="<?php echo $key->Keterangan ?>"><?php echo $key->Keterangan ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -43,8 +42,8 @@
                     <label for="varchar">Visi dan Misi</label>
 
                     <select class="form-control" name="visi">
-                        <?php foreach ($Status as $key) : ?>
-                            <option value="<?php echo $key->Status ?>"><?php echo $key->Status ?></option>
+                        <?php foreach ($Keterangan as $key) : ?>
+                            <option value="<?php echo $key->Keterangan ?>"><?php echo $key->Keterangan ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>

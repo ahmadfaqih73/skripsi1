@@ -29,24 +29,24 @@ class Model_rule extends CI_Model
     }
     function get_ipk()
     {
-        $statusipk = $this->db->query("SELECT `Status` From variabel_ipk GROUP BY `Status` Order By status DESC");
+        $statusipk = $this->db->query("SELECT `Keterangan` FROM kategori WHERE id_variabel=1");
         return $statusipk->result();
     }
-    public function get_status_itaq()
-    {
-        $get_statusitaq = $this->db->query("SELECT `Status` From variabel_itaq GROUP BY `Status` Order By status DESC");
-        return $get_statusitaq->result();
-    }
-    public function get_status_taat()
-    {
-        $get_statustaat = $this->db->query("SELECT `Status` From variabel_taat GROUP BY `Status` Order By status DESC");
-        return $get_statustaat->result();
-    }
-    public function get_status_visi()
-    {
-        $get_statusvisi = $this->db->query("SELECT `Status` From variabel_visi GROUP BY `Status` Order By status DESC");
-        return $get_statusvisi->result();
-    }
+    // public function get_status_itaq()
+    // {
+    //     $get_statusitaq = $this->db->query("SELECT `Status` From variabel_itaq GROUP BY `Status` Order By status DESC");
+    //     return $get_statusitaq->result();
+    // }
+    // public function get_status_taat()
+    // {
+    //     $get_statustaat = $this->db->query("SELECT `Status` From variabel_taat GROUP BY `Status` Order By status DESC");
+    //     return $get_statustaat->result();
+    // }
+    // public function get_status_visi()
+    // {
+    //     $get_statusvisi = $this->db->query("SELECT `Status` From variabel_visi GROUP BY `Status` Order By status DESC");
+    //     return $get_statusvisi->result();
+    // }
     public function get_status_hasil()
     {
         $get_statusvisi = $this->db->query("SELECT `nama_variabel` From variabel_output GROUP BY `nama_variabel` Order By nama_variabel DESC");

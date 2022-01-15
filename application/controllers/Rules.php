@@ -15,7 +15,7 @@ class Rules extends CI_Controller
 
     public function addrule()
     {
-        $data['Status'] = $this->Model_rule->get_ipk();
+        $data['Keterangan'] = $this->Model_rule->get_ipk();
         // $status_itaq['Status'] = $this->Model_rule->get_status_itaq();
         // $status_taat['Status'] = $this->Model_rule->get_status_taat();
         // $status_visi['Status'] = $this->Model_rule->get_status_visi();
