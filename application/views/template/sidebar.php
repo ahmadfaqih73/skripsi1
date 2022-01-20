@@ -36,6 +36,13 @@
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <a href="<?= base_url('Mahasiswa/index'); ?>" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Mahasiswa
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
                 <li class="nav-item">
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-table"></i>

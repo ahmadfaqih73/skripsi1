@@ -3,8 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Rules extends CI_Controller
 {
+
     public function index()
     {
+        // echo 'tes';
         $data['rules'] = $this->Model_rule->Bacarules();
         $this->load->view('template/header');
         $this->load->view('template/Navbar');
@@ -29,8 +31,7 @@ class Rules extends CI_Controller
     public function tambahrule()
     {
         $this->Model_rule->add_rule();
-        $this->session->set_flashdata('flash', 'ditambahkan');
-        redirect('Rules');
+        
     }
     public function getstatushasil(){
         header('Content-typ: application/json');

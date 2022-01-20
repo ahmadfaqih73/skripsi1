@@ -3,7 +3,6 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
-            <?php if ($this->session->flashdata('flash')) : ?>
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0">Rule</h1>
@@ -46,7 +45,6 @@
                         </table>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
-            <?php endif; ?>
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->

@@ -15,16 +15,16 @@ class Model_variable extends CI_Model
         );
         var_dump($data);
     }
-    public function get_ipk(){
-        $get_statusipk=$this->db->query("SELECT `Status` From variabel_itaq GROUP BY `Status` Order By status DESC");
-         return $get_statusipk->result();
-    }
+    // public function get_ipk(){
+    //     $get_statusipk=$this->db->query("SELECT `Status` From variabel_itaq GROUP BY `Status` Order By status DESC");
+    //      return $get_statusipk->result();
+    // }
 
     
-    public function readvariables(){
-        $q_read = $this->db->get('variables')->result_array();
-        return $q_read;
-    }
+    // public function readvariables(){
+    //     $q_read = $this->db->get('variables')->result_array();
+    //     return $q_read;
+    // }
 
     public function variabel(){
         $this->db->select('*');
