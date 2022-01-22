@@ -40,7 +40,7 @@
 
         public function prosesfuzifikasi()
         {
-            $nama = $this->input->post('nama');
+            $nama = $this->input->post('nama_mhs');
             $ipk = $this->input->post('ipk');
             $itaq = $this->input->post('itaq');
             $taat = $this->input->post('taat');
@@ -49,6 +49,7 @@
             $getStatusItaq[] = $this->Model_fuzzyfikasi->StatusItaq();
             $getStatusTaat[] = $this->Model_fuzzyfikasi->StatusTaat();
             $getStatusVisi[] = $this->Model_fuzzyfikasi->StatusVisi();
+            $getStatusHasil[] = $this->Model_fuzzyfikasi->StatusHasil();
 
             //Fuzzyfikasi
 
@@ -79,7 +80,7 @@
                 $jenisIpk2 = (3 - $ipk) / (3 - 2.5);
                 $statusIpk2 = $getStatusIPK[0][1]['Keterangan'];
             } elseif ($ipk >= 3) {
-                $jenisIpk2 = 1;
+                $jenisIpk2 = 0;
                 $statusIpk2 = $getStatusIPK[0][1]['Keterangan'];
             }
 
@@ -124,7 +125,7 @@
                 $statusitaq2 =
                     $getStatusItaq[0][1]['Keterangan'];
             } elseif ($itaq >= 90) {
-                $jenisItaq2 = 1;
+                $jenisItaq2 = 0;
                 $statusitaq2 =
                     $getStatusItaq[0][1]['Keterangan'];
             }
@@ -171,7 +172,7 @@
                 $statusTaat2 =
                     $getStatusTaat[0][1]['Keterangan'];
             } elseif ($taat >= 90) {
-                $jenistaat2 = 1;
+                $jenistaat2 = 0;
                 $statusTaat2 =
                     $getStatusTaat[0][1]['Keterangan'];
             }
@@ -218,7 +219,7 @@
                 $jenisvisi2 = (90 - $visi) / (90 - 70);
                 $statusVisi2 = $getStatusVisi[0][1]['Keterangan'];
             } elseif ($visi >= 90) {
-                $jenisvisi2 = 1;
+                $jenisvisi2 = 0;
                 $statusVisi2 = $getStatusVisi[0][1]['Keterangan'];
             }
 
@@ -245,35 +246,363 @@
             $visimisi = array($jenisvisi, $jenisvisi2, $jenisvisi3);
             $status4 = array($statusVisi, $statusVisi2, $statusVisi3);
             for ($i = 0; $i < 3; $i++) {
-              
-                    $data = array(
-                        'nama_mahasiswa' => $nama,
-                        'nilai_ipk' => $ipk[$i],
-                        'status_ipk' => $status[$i],
-                        'nilai_itaq' => $itaq[$i],
-                        'status_itaq' => $status2[$i],
-                        'nilai_taat' => $taat[$i],
-                        'status_taat' => $status3[$i],
-                        'nilai_visi' => $visimisi[$i],
-                        'status_visi' => $status4[$i],
-                    );
-               
-                    $this->db->insert('fuzzyfikasi', $data);
-                // echo "<pre>";
-                // print_r($data);
-                // echo "</pre>";
-                    // redirect('Fuzzyfikasi'); 
-                
-                  
-            }
-        }
-    }
 
-   // echo $ipk[$i] . ' ' .
-            // $status[$i] . ' ' . 
-            // $itaq[$i] . ' ' .
-            //         $status2[$i] . ' ' . 
-            // $taat[$i]  . ' ' .
-            //         $status3[$i] . ' ' . 
-            // $visimisi[$i]  .' '.
-            // $status[$i] . '<br/> ';
+                $data = array(
+                    'nama_mahasiswa' => $nama,
+                    'nilai_ipk' => $ipk[$i],
+                    'status_ipk' => $status[$i],
+                    'nilai_itaq' => $itaq[$i],
+                    'status_itaq' => $status2[$i],
+                    'nilai_taat' => $taat[$i],
+                    'status_taat' => $status3[$i],
+                    'nilai_visi' => $visimisi[$i],
+                    'status_visi' => $status4[$i],
+                );
+
+                // $this->db->insert('fuzzyfikasi', $data);
+                echo "<pre>";
+                print_r($data);
+                echo "</pre>";
+                // redirect('Fuzzyfikasi'); 
+
+
+            }
+
+            // Proses Implikasi
+            $r1 = min($jenisIpk, $jenisItaq, $jenistaat, $jenisvisi);
+            $r2 = min($jenisIpk, $jenisItaq, $jenistaat, $jenisvisi2);
+            $r3 = min($jenisIpk, $jenisItaq, $jenistaat, $jenisvisi3);
+            $r4 = min($jenisIpk, $jenisItaq, $jenistaat2, $jenisvisi);
+            $r5 = min($jenisIpk, $jenisItaq, $jenistaat2, $jenisvisi2);
+            $r6 = min($jenisIpk, $jenisItaq, $jenistaat2, $jenisvisi3);
+            $r7 = min($jenisIpk, $jenisItaq, $jenistaat3, $jenisvisi);
+            $r8 = min($jenisIpk, $jenisItaq, $jenistaat3, $jenisvisi2);
+            $r9 = min($jenisIpk, $jenisItaq, $jenistaat3, $jenisvisi3);
+            $r10 = min($jenisIpk, $jenisItaq2, $jenistaat, $jenisvisi);
+            $r11 = min($jenisIpk, $jenisItaq2, $jenistaat, $jenisvisi2);
+            $r12 = min($jenisIpk, $jenisItaq2, $jenistaat, $jenisvisi3);
+            $r13 = min($jenisIpk, $jenisItaq2, $jenistaat2, $jenisvisi);
+            $r14 = min($jenisIpk, $jenisItaq2, $jenistaat2, $jenisvisi2);
+            $r15 = min($jenisIpk, $jenisItaq2, $jenistaat2, $jenisvisi3);
+            $r16 = min($jenisIpk, $jenisItaq2, $jenistaat3, $jenisvisi);
+            $r17 = min($jenisIpk, $jenisItaq2, $jenistaat3, $jenisvisi2);
+            $r18 = min($jenisIpk, $jenisItaq2, $jenistaat3, $jenisvisi3);
+            $r19 = min($jenisIpk, $jenisItaq3, $jenistaat, $jenisvisi);
+            $r20 = min($jenisIpk, $jenisItaq3, $jenistaat, $jenisvisi2);
+            $r21 = min($jenisIpk, $jenisItaq3, $jenistaat, $jenisvisi3);
+            $r22 = min($jenisIpk, $jenisItaq3, $jenistaat2, $jenisvisi);
+            $r23 = min($jenisIpk, $jenisItaq3, $jenistaat2, $jenisvisi2);
+            $r24 = min($jenisIpk, $jenisItaq3, $jenistaat2, $jenisvisi3);
+            $r25 = min($jenisIpk, $jenisItaq3, $jenistaat3, $jenisvisi);
+            $r26 = min($jenisIpk, $jenisItaq3, $jenistaat3, $jenisvisi2);
+            $r27 = min($jenisIpk, $jenisItaq3, $jenistaat3, $jenisvisi3);
+            $r28 = min($jenisIpk2, $jenisItaq, $jenistaat, $jenisvisi);
+            $r29 = min($jenisIpk2, $jenisItaq, $jenistaat, $jenisvisi2);
+            $r30 = min($jenisIpk2, $jenisItaq, $jenistaat, $jenisvisi3);
+            $r31 = min($jenisIpk2, $jenisItaq, $jenistaat2, $jenisvisi);
+            $r32 = min($jenisIpk2, $jenisItaq, $jenistaat2, $jenisvisi2);
+            $r33 = min($jenisIpk2, $jenisItaq, $jenistaat2, $jenisvisi3);
+            $r34 = min($jenisIpk2, $jenisItaq, $jenistaat3, $jenisvisi);
+            $r35 = min($jenisIpk2, $jenisItaq, $jenistaat3, $jenisvisi2);
+            $r36 = min($jenisIpk2, $jenisItaq, $jenistaat3, $jenisvisi3);
+            $r37 = min($jenisIpk2, $jenisItaq2, $jenistaat, $jenisvisi);
+            $r38 = min($jenisIpk2, $jenisItaq2, $jenistaat, $jenisvisi2);
+            $r39 = min($jenisIpk2, $jenisItaq2, $jenistaat, $jenisvisi3);
+            $r40 = min($jenisIpk2, $jenisItaq2, $jenistaat2, $jenisvisi);
+            $r41 = min($jenisIpk2, $jenisItaq2, $jenistaat2, $jenisvisi2);
+            $r42 = min($jenisIpk2, $jenisItaq2, $jenistaat2, $jenisvisi3);
+            $r43 = min($jenisIpk2, $jenisItaq2, $jenistaat3, $jenisvisi);
+            $r44 = min($jenisIpk2, $jenisItaq2, $jenistaat3, $jenisvisi2);
+            $r45 = min($jenisIpk2, $jenisItaq2, $jenistaat3, $jenisvisi3);
+            $r46 = min($jenisIpk2, $jenisItaq3, $jenistaat, $jenisvisi);
+            $r47 = min($jenisIpk2, $jenisItaq3, $jenistaat, $jenisvisi2);
+            $r48 = min($jenisIpk2, $jenisItaq3, $jenistaat, $jenisvisi3);
+            $r49 = min($jenisIpk2, $jenisItaq3, $jenistaat2, $jenisvisi);
+            $r50 = min($jenisIpk2, $jenisItaq3, $jenistaat2, $jenisvisi2);
+            $r51 = min($jenisIpk2, $jenisItaq3, $jenistaat2, $jenisvisi3);
+            $r52 = min($jenisIpk2, $jenisItaq3, $jenistaat3, $jenisvisi);
+            $r53 = min($jenisIpk2, $jenisItaq3, $jenistaat3, $jenisvisi2);
+            $r54 = min($jenisIpk2, $jenisItaq3, $jenistaat3, $jenisvisi3);
+            $r55 = min($jenisIpk3, $jenisItaq, $jenistaat, $jenisvisi);
+            $r56 = min($jenisIpk3, $jenisItaq, $jenistaat, $jenisvisi2);
+            $r57 = min($jenisIpk3, $jenisItaq, $jenistaat, $jenisvisi3);
+            $r58 = min($jenisIpk3, $jenisItaq, $jenistaat2, $jenisvisi);
+            $r59 = min($jenisIpk3, $jenisItaq, $jenistaat2, $jenisvisi2);
+            $r60 = min($jenisIpk3, $jenisItaq, $jenistaat2, $jenisvisi3);
+            $r61 = min($jenisIpk3, $jenisItaq, $jenistaat3, $jenisvisi);
+            $r62 = min($jenisIpk3, $jenisItaq, $jenistaat3, $jenisvisi2);
+            $r63 = min($jenisIpk3, $jenisItaq, $jenistaat3, $jenisvisi3);
+            $r64 = min($jenisIpk3, $jenisItaq2, $jenistaat, $jenisvisi);
+            $r65 = min($jenisIpk3, $jenisItaq2, $jenistaat, $jenisvisi2);
+            $r66 = min($jenisIpk3, $jenisItaq2, $jenistaat, $jenisvisi3);
+            $r67 = min($jenisIpk3, $jenisItaq2, $jenistaat2, $jenisvisi);
+            $r68 = min($jenisIpk3, $jenisItaq2, $jenistaat2, $jenisvisi2);
+            $r69 = min($jenisIpk3, $jenisItaq2, $jenistaat2, $jenisvisi3);
+            $r70 = min($jenisIpk3, $jenisItaq2, $jenistaat3, $jenisvisi);
+            $r71 = min($jenisIpk3, $jenisItaq2, $jenistaat3, $jenisvisi2);
+            $r72 = min($jenisIpk3, $jenisItaq2, $jenistaat3, $jenisvisi3);
+            $r73 = min($jenisIpk3, $jenisItaq3, $jenistaat, $jenisvisi);
+            $r74 = min($jenisIpk3, $jenisItaq3, $jenistaat, $jenisvisi2);
+            $r75 = min($jenisIpk3, $jenisItaq3, $jenistaat, $jenisvisi3);
+            $r76 = min($jenisIpk3, $jenisItaq3, $jenistaat2, $jenisvisi);
+            $r77 = min($jenisIpk3, $jenisItaq3, $jenistaat2, $jenisvisi2);
+            $r78 = min($jenisIpk3, $jenisItaq3, $jenistaat2, $jenisvisi3);
+            $r79 = min($jenisIpk3, $jenisItaq3, $jenistaat3, $jenisvisi);
+            $r80 = min($jenisIpk3, $jenisItaq3, $jenistaat3, $jenisvisi2);
+            $r81 = min($jenisIpk3, $jenisItaq3, $jenistaat3, $jenisvisi3);
+
+            $Rule = array(
+                $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10,
+                $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20,
+                $r21, $r22, $r23, $r24, $r25, $r26, $r27, $r28, $r29, $r30,
+                $r31, $r32, $r33, $r34, $r35, $r36, $r37, $r38, $r39, $r40,
+                $r41, $r42, $r43, $r44, $r45, $r46, $r47, $r48, $r49, $r50,
+                $r51, $r52, $r53, $r54, $r55, $r56, $r57, $r58, $r59, $r60,
+                $r61, $r62, $r63, $r64, $r65, $r66, $r67, $r68, $r69, $r70,
+                $r71, $r72, $r73, $r74, $r75, $r76, $r77, $r78, $r79, $r80,
+                $r81
+            );
+            echo "<pre>";
+            print_r($Rule);
+            echo "</pre>";
+            for ($i = 0; $i < 81; $i++) {
+                $data1 = $Rule[$i];
+                //  echo "<pre>";
+                // print_r($data1);
+                // echo "</pre>";
+
+
+            }
+
+
+            $hasil_tidak_cocok = array(
+                $r1, $r2,   $r3,  $r4,  $r5,  $r6,  $r7,  $r8,  $r9,  $r10,
+                $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20,
+                $r21, $r22, $r23, $r24, $r25, $r26, $r27, $r28, $r29, $r30,
+                $r31, $r32, $r33, $r34, $r35, $r36, $r37, $r38, $r39, $r40,
+                $r43, $r46, $r47, $r48, $r49, $r52, $r55, $r56, $r57, $r58, $r59, $r60,
+                $r61, $r62, $r63, $r64, $r65, $r66, $r67, $r70, $r73, $r74, $r75, $r76, $r79
+            );
+            $hasil_cocok = array(
+                $r41, $r42, $r44, $r45, $r50, $r51, $r53, $r54,
+                $r68, $r69, $r71
+            );
+            $hasil_sangat_cocok = array(
+                $r72, $r77, $r78, $r80,
+                $r81
+            );
+
+            $infrensi_tdk_cocok[] = 0;
+            $infrensi_cocok[] = 0;
+            $infrensi_sangat_cocok[] = 0;
+            for ($i = 0; $i < 65; $i++) {
+                $infrensi_tdk_cocok[$i] = (($hasil_tidak_cocok[$i] * (70 - 50)) + 50);
+                // echo "<pre> defu_tdk_cocok ";
+                // print_r($hasil_tidak_cocok[$i] . " anu " . $infrensi_tdk_cocok[$i]);
+                // echo "</pre>";
+                if ($i >= 64) {
+                    $defuzifikasi_tdk_cocok = 0.0;
+                    $alfa_tdk_cocok = 0.0;
+                    $omega_tdk_cocok = 0.0;
+                    for ($i = 0; $i < 65; $i++) {
+                        if ($hasil_tidak_cocok[$i] == 0) {
+                            $defuzifikasi_tdk_cocok += 0.0;
+                            $alfa_tdk_cocok += 0.0;
+                        }
+                        if ($hasil_tidak_cocok[$i] != 0) {
+                            $defuzifikasi_tdk_cocok += ($infrensi_tdk_cocok[$i] * $hasil_tidak_cocok[$i]);
+                            // $alfa_tdk_cocok += $hasil_tidak_cocok[$i];
+                        }
+
+                        // if ($i >= 64) {
+                        //     $totale = 0.0;
+                        //     if ($alfa_tdk_cocok == 0) $totale = 0.0;
+                        //     else $totale = $defuzifikasi_tdk_cocok / $alfa_tdk_cocok;
+                        //     echo "<pre> \t \t \t defu_tdk_cocok ";
+                        //     print_r($totale);
+                        //     echo "</pre>";
+
+                        // }
+                    }
+                }
+            }
+            for ($i = 0; $i < 11; $i++) {
+                $infrensi_cocok[$i] = (($hasil_cocok[$i] * (70 - 50)) + 50);
+                // echo "<pre> hasil_cocok ";
+                // print_r($hasil_cocok[$i] . " anu " . $infrensi_cocok[$i]);
+                // echo "</pre>";
+                if ($i >= 10) {
+                    $defuzifikasi_cocok = 0.0;
+                    $alfa_cocok = 0.0;
+                    for ($i = 0; $i < 11; $i++) {
+                        if ($hasil_cocok[$i] == 0) {
+                            $defuzifikasi_cocok += 0.0;
+                            $alfa_cocok += 0.0;
+                        }
+                        if ($hasil_cocok[$i] != 0) {
+                            $defuzifikasi_cocok += ($infrensi_cocok[$i] * $hasil_cocok[$i]);
+                            $alfa_cocok += $hasil_cocok[$i];
+                        }
+                        // if ($i >= 10) {
+                        //     $totale = 0.0;
+                        //     if ($alfa_cocok == 0) $totale = 0.0;
+                        //     else $totale = $defuzifikasi_cocok / $alfa_cocok;
+                        //     echo "<pre> \t \t \t defu_cocok ";
+                        //     print_r($totale);
+                        //     echo "</pre>";
+                        // }
+                    }
+                }
+            }
+            // echo "<pre> \t \t \t defu_cocok ";
+            // print_r($defuzifikasi_tdk_cocok);
+            // echo "</pre>";
+
+            for ($i = 0; $i < 5; $i++) {
+                $infrensi_sangat_cocok[$i] = (($hasil_sangat_cocok[$i] * (70 - 50)) + 70);
+                // echo "<pre> hasil_sangat_cocok ";
+                // print_r($hasil_sangat_cocok[$i] . " anu " . $infrensi_sangat_cocok[$i]);
+                // echo "</pre>";
+                if ($i >= 4) {
+                    $defuzifikasi_sangat_cocok = 0.0;
+                    $alfa_sangat_cocok = 0.0;
+                    for ($i = 0; $i < 5; $i++) {
+                        if ($hasil_sangat_cocok[$i] == 0) {
+                            $defuzifikasi_sangat_cocok += 0.0;
+                            $alfa_sangat_cocok += 0.0;
+                        }
+                        if ($hasil_sangat_cocok[$i] != 0) {
+                            $defuzifikasi_sangat_cocok += ($infrensi_sangat_cocok[$i] * $hasil_sangat_cocok[$i]);
+                            $alfa_sangat_cocok += $hasil_sangat_cocok[$i];
+                        }
+                        // if ($i >= 4) {
+                        //     $totale = 0.0;
+                        //     if ($alfa_sangat_cocok == 0) $totale = 0.0;
+                        //     else $totale = $defuzifikasi_sangat_cocok / $alfa_sangat_cocok;
+                        //     echo "<pre> \t \t \t defu_tdk_cocok ";
+                        //     print_r($totale);
+                        //     echo "</pre>";
+                        // }
+                    }
+                }
+            }
+            $Hasil_defuz = ($defuzifikasi_tdk_cocok + $defuzifikasi_cocok + $defuzifikasi_sangat_cocok) / ($alfa_tdk_cocok + $alfa_cocok + $alfa_sangat_cocok);
+            // echo "<pre> \t \t \t defu_tdk_cocok ";
+            //                 print_r($Hasil_defuz);
+            //                 echo "</pre>";
+            //Hasil
+            //Tidak Baik
+            if ($Hasil_defuz <= 50) {
+                $jenishasil = 1;
+                $statushasil  =
+                    $getStatusHasil[0][0]['Keterangan'];
+            } elseif ($Hasil_defuz >= 50 and $Hasil_defuz <= 70) {
+                $jenishasil = (70 - $Hasil_defuz) / (70 - 50);
+                $statushasil =
+                    $getStatusHasil[0][0]['Keterangan'];
+            } elseif ($Hasil_defuz >= 70) {
+                $jenishasil = 0;
+                $statushasil =
+                    $getStatusHasil[0][0]['Keterangan'];
+            }
+
+            //Baik
+            if ($Hasil_defuz <= 50) {
+                $jenishasil2 = 0;
+                $statushasil2 =
+                    $getStatusHasil[0][1]['Keterangan'];
+            } elseif ($taat >= 50 and $Hasil_defuz <= 70) {
+                $jenishasil2 = ($Hasil_defuz - 50) / (70 - 50);
+                $statushasil2 =
+                    $getStatusHasil[0][1]['Keterangan'];
+            } elseif ($Hasil_defuz >= 70  and $Hasil_defuz <= 90) {
+                $jenishasil2 = (90 - $Hasil_defuz) / (90 - 70);
+                $statushasil2 =
+                    $getStatusHasil[0][1]['Keterangan'];
+            } elseif ($Hasil_defuz >= 90) {
+                $jenishasil2 = 1;
+                $statushasil2 =
+                    $getStatusHasil[0][1]['Keterangan'];
+            }
+
+            //Sangat Baik
+            if ($Hasil_defuz  <= 70) {
+                $jenishasil3 = 0;
+                $statushasil3 =
+                    $getStatusHasil[0][2]['Keterangan'];
+            } elseif ($Hasil_defuz >= 70 and $Hasil_defuz <= 90) {
+                $jenishasil3 = ($Hasil_defuz - 70) / (90 - 70);
+                $statushasil3 =
+                    $getStatusHasil[0][2]['Keterangan'];
+            } elseif ($Hasil_defuz >= 90) {
+                $jenishasil3 = 1;
+                $statushasil3 =
+                    $getStatusHasil[0][2]['Keterangan'];
+            }
+
+            // $final_defuz=array($jenishasil,$jenishasil2,$jenishasil3);
+            // $final_status=array($statushasil,$statushasil2,$statushasil3);
+
+
+
+            $data = array(
+                'nama_mahasiswa' => $nama,
+                'nilai_hasil_tdkcocok' => $jenishasil,
+                'status_tdkcocok' => $statushasil,
+                'nilai_hasil_cocok' => $jenishasil2,
+                'status_cocok' => $statushasil2,
+                'nilai_hasil_sangatcocok' => $jenishasil3,
+                'status_sangatcocok' => $statushasil3
+
+            );
+
+            // $this->db->insert('fuzzyfikasi', $data);
+            echo "<pre>";
+            print_r($data);
+            echo "</pre>";
+            // redirect('Fuzzyfikasi'); 
+
+
+
+
+            // if ($i >= 64) {
+            //     for ($j = 0; $j < 11; $j++) {
+            //         $defu_cocok = 0;
+            //         if ($hasil_cocok[$j] == 0) {
+            //             // echo 'tidak ada hasil defuzi';
+            //             //    $defu_tdk_cocok=(($hasil_tidak_cocok[$i]*(70-50))+50);
+            //         } elrint_r($sum_defucocok);
+            //         // echo "</pre>";
+            //         if ($j >= 10) {
+            //             for ($k = 0; $k < 5; $k++) {
+            //                 $defu_sangat_cocok = 0;
+            //                 if ($hasil_sangat_cocok[$k] == 0) {
+            //                     // echo 'tidak ada hasil defuzi';
+            //                     //    $defu_tdk_cocok=(($hasil_tidak_cocok[$i]*(70-50))+50);
+            //                 } else {
+            //                     $defu_sangat_cocok = $hasil_sangat_cocok[$k] * (70 - 50) + 70;
+            //                 }
+
+            //                 echo "<pre> defu_sangat_cocok  ";
+            //                 print_r($hasil_sangat_cocok[$k] . " anu " . $defu_sangat_cocok);
+            //                 echo "</pre>";
+            //             }
+            //         }
+            //     }
+            // }
+
+
+
+            // }
+
+        }
+
+        // echo $ipk[$i] . ' ' .
+        // $status[$i] . ' ' . 
+        // $itaq[$i] . ' ' .
+        //         $status2[$i] . ' ' . 
+        // $taat[$i]  . ' ' .
+        //         $status3[$i] . ' ' . 
+        // $visimisi[$i]  .' '.
+        // $status[$i] . '<br/> ';
+    }

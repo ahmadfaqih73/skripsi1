@@ -11,7 +11,7 @@
 
              <div class="form-group">
                <label>Nama Mahasiswa</label>
-               <input type="text" name="nama" class="form-control" placeholder="Nama Mahasiswa">
+               <!-- <input type="text" name="nama" class="form-control" placeholder="Nama Mahasiswa"> -->
                <!-- <?= form_error('Nama', '<small class="text-danger pl-3">', '</small>'); ?> -->
                <select class="form-control" id="selectMhs" name="nama_mhs">
                </select>
@@ -55,7 +55,7 @@
    
      $('#selectMhs').select2({
             theme: 'bootstrap4',
-            placeholder: 'Pilih menu',
+            placeholder: 'Pilih Mahasiswa',
             ajax: {
                 url: '<?php echo base_url('Fuzzyfikasi/getNamaMahasiswa') ?>',
                 type: 'POST',

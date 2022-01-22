@@ -56,4 +56,10 @@
  kategori WHERE id_variabel='4';");
             return $query->result_array();  
         }
+        public function StatusHasil()
+        {
+            $query = $this->db->query("SELECT Keterangan FROM 
+ kategori WHERE id_variabel='5';");
+            return $query->result_array();
+        }
     }
