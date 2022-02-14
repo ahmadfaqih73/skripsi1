@@ -9,7 +9,7 @@ class View_user extends CI_Controller
         $this->load->view('template/header');
         $this->load->view('template/Navbar');
         $this->load->view('template/sidebar');
-        $this->load->view('view_user/show_user', $data);
+        $this->load->view('view_user/view_user',$data);
         $this->load->view('template/footer');
     }
 
@@ -25,5 +25,23 @@ class View_user extends CI_Controller
     public function tambah_user()
     {
         $this->full_user->tambahuser();
+        redirect('View_user');
     }
+    public function view_edit($id)
+    {
+        $data['user'] = $this->full_user->getUser($id);
+        $this->load->view('template/header');
+        $this->load->view('template/Navbar');
+        $this->load->view('template/sidebar');
+        $this->load->view('view_user/edit_user', $data);
+        $this->load->view('template/footer');
+    }
+    public function delete_user($id){
+        $this->full_user->hapususer($id);
+        redirect('View_user');
+}
+public function update_user(){
+    $this->full_user->ubah_user();
+        redirect('View_user');
+}
 }

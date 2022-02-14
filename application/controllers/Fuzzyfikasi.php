@@ -37,8 +37,9 @@
 
             echo json_encode($data);
         }
-        public function prosesfuzifikasi(){
-            $nama = $this->input->post('nama');
+        public function prosesfuzifikasi()
+        {
+            $nama = $this->input->post('nama_mhs');
             $ipk = $this->input->post('ipk');
             $itaq = $this->input->post('itaq');
             $taat = $this->input->post('taat');
@@ -232,22 +233,51 @@
                 $jenisvisi3 = 1;
                 $statusVisi3 = $getStatusVisi[0][2]['Keterangan'];
             }
+            $tbfuzzyfikasi=array(
+                'Nama_mhs'=>$nama,
+                'nilai1'=>$jenisIpk,
+                'status1'=>$statusIpk,
+                'nilai2'=>$jenisItaq,
+                'status2'=>$statusitaq,
+                'nilai3'=>$jenistaat,
+                'status3'=>$statusTaat,
+                'nilai_4'=>$jenisvisi,
+                'status4'=>$statusVisi,
+                'nilai_5' => $jenisIpk2,
+                'status5' => $statusIpk2,
+                'nilai_6' => $jenisItaq2,
+                'status6' => $statusitaq2,
+                'nilai_7' => $jenistaat2,
+                'status_7' => $statusTaat2,
+                'nilai_8' => $jenisvisi2,
+                'status_8' => $statusVisi2,
+                'nilai_9' => $jenisIpk3,
+                'status_9' => $statusIpk3,
+                'nilai_10' => $jenisItaq3,
+                'status_10' => $statusitaq3,
+                'nilai_11' => $jenistaat3,
+                'status_11' => $statusTaat3,
+                'nilai_12' => $jenisvisi3,
+                'status_12' => $statusVisi3,
+        
+            );
+            $this->db->insert('tb_fuzzyfikasi', $tbfuzzyfikasi);
 
 
-            // array push, 1 variabel, 4 data,
-            $ipk = array('nilai1' => $jenisIpk, 'nilai2' => $jenisIpk2, 'nilai3' =>$jenisIpk3);
-            $status = array('status1' => $statusIpk, 'status2' => $statusIpk2, 'status3' => $statusIpk3);
-            $itaq = array('nilai1' => $jenisItaq, 'nilai2' => $jenisItaq2, 'nilai3' => $jenisItaq3);
-            $status2 = array('status1' => $statusitaq, 'status2' => $statusitaq2,'status3' => $statusitaq3);
-            $taat = array('nilai1' => $jenistaat,'nilai2' => $jenistaat2, 'nilai3' => $jenistaat3);
-            $status3 = array('status1' =>$statusTaat, 'status2' =>$statusTaat2, 'status3' =>$statusTaat3);
-            $visimisi = array('nilai1' =>$jenisvisi, 'nilai2' =>$jenisvisi2, 'nilai3' =>$jenisvisi3);
-            $status4 = array('status1' =>$statusVisi, 'status2' =>$statusVisi2, 'status3' =>$statusVisi3);
+            // // array push, 1 variabel, 4 data,
+            // $ipk = array('nilai1' => $jenisIpk, 'nilai2' => $jenisIpk2, 'nilai3' => $jenisIpk3);
+            // $status = array('status1' => $statusIpk, 'status2' => $statusIpk2, 'status3' => $statusIpk3);
+            // $itaq = array('nilai1' => $jenisItaq, 'nilai2' => $jenisItaq2, 'nilai3' => $jenisItaq3);
+            // $status2 = array('status1' => $statusitaq, 'status2' => $statusitaq2, 'status3' => $statusitaq3);
+            // $taat = array('nilai1' => $jenistaat, 'nilai2' => $jenistaat2, 'nilai3' => $jenistaat3);
+            // $status3 = array('status1' => $statusTaat, 'status2' => $statusTaat2, 'status3' => $statusTaat3);
+            // $visimisi = array('nilai1' => $jenisvisi, 'nilai2' => $jenisvisi2, 'nilai3' => $jenisvisi3);
+            // $status4 = array('status1' => $statusVisi, 'status2' => $statusVisi2, 'status3' => $statusVisi3);
 
-            $ipk2 = array_merge($ipk,$status);
-            $itaq2 = array_merge($itaq,$status2);
-            $taat2 = array_merge($taat,$status3);
-            $visi = array_merge($visimisi,$status4);
+            // $ipk2 = array_merge($ipk, $status);
+            // $itaq2 = array_merge($itaq, $status2);
+            // $taat2 = array_merge($taat, $status3);
+            // $visi = array_merge($visimisi, $status4);
             // echo "<pre> ";
             //     print_r($itaq2);
             //     echo "</pre>";
@@ -337,17 +367,19 @@
             $r81 = min($jenisIpk3, $jenisItaq3, $jenistaat3, $jenisvisi3);
 
             $Rule = array(
-                $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10,
-                $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20,
-                $r21, $r22, $r23, $r24, $r25, $r26, $r27, $r28, $r29, $r30,
-                $r31, $r32, $r33, $r34, $r35, $r36, $r37, $r38, $r39, $r40,
-                $r41, $r42, $r43, $r44, $r45, $r46, $r47, $r48, $r49, $r50,
-                $r51, $r52, $r53, $r54, $r55, $r56, $r57, $r58, $r59, $r60,
-                $r61, $r62, $r63, $r64, $r65, $r66, $r67, $r68, $r69, $r70,
-                $r71, $r72, $r73, $r74, $r75, $r76, $r77, $r78, $r79, $r80,
-                $r81
+                'Nama_mhs'=>$nama, 'R1' => $r1, 'R2' => $r2, 'R3' => $r3, 'R4' => $r4,
+                'R5' => $r5, 'R6' => $r6, 'R7' =>$r7, 'R8' =>$r8, 'R9' =>$r9, 'R10' =>$r10,
+                'R11' =>$r11, 'R12' =>$r12, 'R13' =>$r13, 'R14' =>$r14, 'R15' =>$r15, 'R16' =>$r16, 'R17' =>$r17, 'R18' =>$r18, 'R19' =>$r19, 'R20' =>$r20,
+                'R21' =>$r21, 'R22' =>$r22,'R23' => $r23, 'R24' =>$r24, 'R25' =>$r25, 'R26' =>$r26,'R27' => $r27, 'R28' =>$r28, 'R29' =>$r29, 'R30' =>$r30,
+                'R31' =>$r31, 'R32' =>$r32, 'R33' =>$r33, 'R34' =>$r34, 'R35' =>$r35, 'R36' =>$r36, 'R37' =>$r37, 'R38' =>$r38, 'R39' =>$r39, 'R40' =>$r40,
+                'R41' =>$r41, 'R42' =>$r42, 'R43' =>$r43, 'R44' =>$r44, 'R45' =>$r45, 'R46' =>$r46, 'R47' =>$r47, 'R48' =>$r48, 'R49' =>$r49, 'R50' =>$r50,
+                'R51' =>$r51, 'R52' =>$r52, 'R53' =>$r53, 'R54' =>$r54, 'R55' =>$r55, 'R56' =>$r56, 'R57' =>$r57, 'R58' =>$r58, 'R59' =>$r59, 'R60' =>$r60,
+                'R61' =>$r61, 'R62' =>$r62, 'R63' =>$r63, 'R64' =>$r64, 'R65' =>$r65, 'R66' =>$r66, 'R67' =>$r67, 'R68' =>$r68, 'R69' =>$r69, 'R70' =>$r70,
+                'R71' =>$r71, 'R72' =>$r72,'R73' => $r73,'R74' => $r74,'R75' => $r75, 'R76' =>$r76, 'R77' =>$r77, 'R78' =>$r78, 'R79' =>$r79, 'R80' =>$r80,
+                'R81' =>$r81
             );
-            
+            $this->db->insert('implikasi',$Rule);
+
 
             $hasil_tidak_cocok = array(
                 $r1, $r2,   $r3,  $r4,  $r5,  $r6,  $r7,  $r8,  $r9,  $r10,
@@ -517,35 +549,42 @@
                     $getStatusHasil[0][2]['Keterangan'];
             }
 
-            $final_defuz=array($jenishasil,$jenishasil2,$jenishasil3);
-            $final_status=array($statushasil,$statushasil2,$statushasil3);
+            $final_defuz = array($jenishasil, $jenishasil2, $jenishasil3);
+            $final_status = array($statushasil, $statushasil2, $statushasil3);
 
 
-            // data ketiga
+            //data ketiga
             $final = array(
-                'nama_mahasiswa' => $nama,
-                'nilai_hasil_tdkcocok' => $jenishasil,
-                'status_tdkcocok' => $statushasil,
-                'nilai_hasil_cocok' => $jenishasil2,
-                'status_cocok' => $statushasil2,
-                'nilai_hasil_sangatcocok' => $jenishasil3,
-                'status_sangatcocok' => $statushasil3
+                'nama_mhs' => $nama,
+                'Hasil_dezufikasi'=>$Hasil_defuz,
+                'nilai_tidakcocok' => $jenishasil,
+                'status_1' => $statushasil,
+                'nilai_cocok' => $jenishasil2,
+                'status_2' => $statushasil2,
+                'nilai_sangatcocok' => $jenishasil3,
+                'status_3' => $statushasil3
 
             );
+            //  echo "<pre>";
+            //     print_r($final);
+            //     echo "</pre>";
+                $this->db->insert('hasil',$final);
+                redirect('fuzzyfikasi');
 
-            $data = array('ipk' => $ipk2,
-                            'itaq' => $itaq2,
-                            'taat' => $taat2,
-                            'visi' => $visi,
-                            'rule' => $Rule,
-                            'final'=> $final,
-                            'nama' => $nama
-            );
-            $this->load->view('template/header');
-            $this->load->view('template/Navbar');
-            $this->load->view('template/sidebar');
-            $this->load->view('hasil',$data);
-            $this->load->view('template/footer');
+            // $data = array(
+            //     'ipk' => $ipk2,
+            //     'itaq' => $itaq2,
+            //     'taat' => $taat2,
+            //     'visi' => $visi,
+            //     'rule' => $Rule,
+            //     'final' => $final,
+            //     'nama' => $nama
+            // );
+            // $this->load->view('template/header');
+            // $this->load->view('template/Navbar');
+            // $this->load->view('template/sidebar');
+            // $this->load->view('hasil', $data);
+            // $this->load->view('template/footer');
         }
 
         public function prosesfuzifikasi2()
@@ -872,9 +911,9 @@
                 $r71, $r72, $r73, $r74, $r75, $r76, $r77, $r78, $r79, $r80,
                 $r81
             );
-            echo "<pre>";
-            print_r($Rule);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($Rule);
+            // echo "</pre>";
             for ($i = 0; $i < 81; $i++) {
                 $data1 = $Rule[$i];
                 //  echo "<pre>";
@@ -1070,9 +1109,9 @@
             );
 
             // $this->db->insert('fuzzyfikasi', $data);
-            echo "<pre>";
-            print_r($data);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($data);
+            // echo "</pre>";
             // redirect('Fuzzyfikasi'); 
 
 

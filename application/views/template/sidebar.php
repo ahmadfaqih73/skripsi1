@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
         <img src="<?php echo base_url() ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Repository</span>
+        <span class="brand-text font-weight-light">SPK</span>
     </a>
 
     <!-- Sidebar -->
@@ -30,14 +30,14 @@
                with font-awesome or any other icon font library -->
                 <li class="nav-item menu-close">
                     <a href="<?= base_url('View_user/index'); ?>" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-user"></i>
                         <p>
                             User
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <a href="<?= base_url('Mahasiswa/index'); ?>" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <a href="<?= base_url('Mahasiswa/view_mhs'); ?>" class="nav-link active">
+                        <i class="nav-icon fas fa-user-graduate"></i>
                         <p>
                             Mahasiswa
                             <i class="right fas fa-angle-left"></i>
@@ -64,6 +64,7 @@
                                 <p>Himpunan Fuzzy</p>
                             </a>
                         </li>
+                    </ul>
 
                 </li>
                 <li class="nav-item">
@@ -78,9 +79,34 @@
                         <li class="nav-item">
                             <a href="<?= base_url('Fuzzyfikasi/index') ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Fuzzyfikasi</p>
+                                <p>Input Nilai</p>
                             </a>
                         </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Hasil/lihat_fuzyfikasi') ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>hasil fuzzyfikasi</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Hasil/lihat_implikasi') ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>hasil implikasi</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Hasil/index') ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Hasil</p>
+                            </a>
+                        </li>
+                    </ul>
 
                 </li>
 

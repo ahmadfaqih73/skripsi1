@@ -21,7 +21,7 @@ class Model_rule extends CI_Model
 
         );
         // var_dump($data);
-        $this->db->insert('rules',$data);
+        $this->db->insert('rules', $data);
     }
     public function Bacarules()
     {
@@ -32,11 +32,10 @@ class Model_rule extends CI_Model
         $statusipk = $this->db->query("SELECT `Keterangan` FROM kategori WHERE id_variabel=1");
         return $statusipk->result();
     }
-   
+
     public function get_status_hasil()
     {
         $get_statusvisi = $this->db->query("SELECT `nama_variabel` From variabel_output GROUP BY `nama_variabel` Order By nama_variabel DESC");
         return $get_statusvisi->result();
     }
-    
 }

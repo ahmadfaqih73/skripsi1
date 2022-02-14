@@ -9,11 +9,11 @@
                 </div><!-- /.col -->
             </div><!-- /.row -->
 
-            <?php echo form_open_multipart('View_user/tambah_variable') ?>
+            <?php echo form_open_multipart('View_user/tambah_user') ?>
             <form class="surat_out" method="POST">
                 <div class="form-group">
-                    <label>variabel</label>
-                    <input type="text" name="variabel" class="form-control" placeholder="Full name">
+                    <label>Fullname</label>
+                    <input type="text" name="fullname" class="form-control" placeholder="Full name">
                     <?= form_error('Nama', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 

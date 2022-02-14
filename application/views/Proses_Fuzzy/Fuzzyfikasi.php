@@ -11,11 +11,11 @@
 
              <div class="form-group">
                <label>Nama Mahasiswa</label>
-               <input type="text" name="nama" class="form-control" placeholder="Nama Mahasiswa">
+               <!-- <input type="text" name="nama" class="form-control" placeholder="Nama Mahasiswa"> -->
                <!-- <?= form_error('Nama', '<small class="text-danger pl-3">', '</small>'); ?> -->
-              <!--  <select class="form-control" id="selectMhs" name="nama_mhs">
+               <select class="form-control" id="selectMhs" name="nama_mhs">
                </select>
-             </div> -->
+             </div>
 
              <div class="form-group">
                <label>ipk</label>
