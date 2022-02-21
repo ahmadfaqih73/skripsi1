@@ -5,8 +5,11 @@
     {
         public function readall()
         {
-            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = hasil.nama_mhs');
-            return $this->db->get('hasil')->result_array();
+
+            $query = $this->db->query('SELECT hasil.id_hasil, Hasil_dezufikasi AS hasil, mahasiswa.Nama_mhs AS nama_mahasiswa  FROM `hasil` JOIN `mahasiswa` ON `mahasiswa`.`id_mahasiswa` = `hasil`.`nama_mhs` ORDER BY hasil.Hasil_dezufikasi DESC');
+            return $query->result_array();
+            // $this->db->join('mahasiswa', 'mahasiswa.id_mahassiswa = hasil.nama_mhs');
+            // return $this->db->get('hasil')->result_array();
         }
         public function readfuzzifikasi()
         {

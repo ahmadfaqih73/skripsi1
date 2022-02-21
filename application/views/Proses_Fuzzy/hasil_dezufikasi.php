@@ -27,7 +27,7 @@
               ?>
                 <tr>
                   <td><?php echo ++$no ?></td>
-                  <td><?php echo $h['Nama_mhs'] ?></td>
+                  <td><?php echo $h['nama_mahasiswa'] ?></td>
                   <td><a class="btn btn-info btn-sm" href="<?= base_url(); ?>Hasil/lihat/<?= $h['id_hasil']; ?>">
                       <i class="fas fa-pencil-alt">
                       </i>
